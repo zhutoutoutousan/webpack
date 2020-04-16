@@ -3,12 +3,13 @@ const ModuleFederationPlugin = require("../../../../lib/container/ModuleFederati
 module.exports = {
 	plugins: [
 		new ModuleFederationPlugin({
-			name: "container",
+			name: "main",
 			library: { type: "commonjs-module" },
-			filename: "container.js",
 			remotes: {
-				containerB: "../1-container-full/container.js"
+				containerB: "../1-container-full/container.js",
+				self: "./bundle0.js"
 			},
+			exposes: ["./Self"],
 			shared: ["react"]
 		})
 	]
